@@ -13,6 +13,18 @@
       </svg>
       Create Data
     </a>
+    <form action="" method="get">
+      <div class="row">
+          <div class="col-lg-10 col-sm-12">
+              <div class="input-group mb-3">
+                  <input name="cari" type="text" class="form-control" placeholder="Searching Data" a>
+                  <button type="submit" class="btn btn-outline-primary" type="button" id="button-addon2">Find</button>
+                  <a href="/inbox"><button class="btn btn-danger ms-1">Clear</button></a>
+                </div>
+                
+          </div>
+      </div>
+  </form>
     <table class="table">
       <thead>
         <th>#</th>
@@ -29,7 +41,7 @@
           
        
         <tr>
-          <td>{{$loop->iteration}}</td>
+          <td>{{$loop->iteration+$data->firstItem()-1}}</td>
           <td>{{$x->no_agenda}}</td>
           <td>{{$x->jenis_surat}}</td>
           <td>{{Carbon\Carbon::create($x->tanggal_kirim)->format('d F Y')}}</td>
@@ -87,6 +99,9 @@
         @endforeach
       </tbody>
     </table>
+    <div class="col-3 offset-10 mt-3">
+      {{$data->links()}}
+    </div>
   </div>
    
    

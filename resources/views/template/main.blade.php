@@ -1,3 +1,8 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+?>
+
 <base href="http://127.0.0.1:8000/">
 
 <!DOCTYPE html>
@@ -36,6 +41,10 @@
     <hr />
     <nav class="menu flex-fill">
       <div class="section-menu">
+        <a href="/profile" class="item-menu @yield('profile')" onclick="handleClickMenu(this)">
+          <i class="fa fa-id-card" aria-hidden="true"></i>
+          <p>Profile</p>
+        </a>
         <a href="/dashboard" class="item-menu @yield('dashboard')" onclick="handleClickMenu(this)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer"
             viewBox="0 0 16 16">
@@ -116,8 +125,13 @@
         <i class="fa-solid fa-bars"></i>
       </button>
       <nav class="nav-content gap-5">
+        
         <div class="d-flex gap-3 align-items-center">
-          <img src="./assets/images/admin.jpg" alt="Photo Profile" class="photo-profile" />
+          @if (Auth::user()->foto!='')
+            <img src="{{Storage::url(Auth::user()->foto)}}" alt="Photo Profile" class="photo-profile" />
+            @else
+            <img src="./assets/images/iconuser.jpeg" alt="Photo Profile" class="photo-profile" />
+          @endif
           <div>
             <p class="title-content mb-2">Okaerinasai, Reignlf - Sama 🙌🏻 </p>
 

@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Auth;
 ?>
 @extends('template.main')
 @section('judul','Dashboard')
-@section('home','active')
+@section('dashboard','active')
 @section('konten')
 <div class="d-flex gap-4 flex-wrap">
     <div class="product-card shadow">

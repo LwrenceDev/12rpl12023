@@ -1,3 +1,8 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+?>
+
 @extends('template.main')
 @section('judul','Data User')
 @section('konten')
@@ -16,6 +21,7 @@
     <table class="table">
       <thead>
         <th>#</th>
+        <th>Profile</th>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -28,6 +34,14 @@
        
         <tr>
           <td>{{$loop->iteration}}</td>
+          <td>
+            @if ($x->foto!='')
+            <img class="rounded-circle shadow" width="60px" height="60px" src="
+            {{Storage::url($x->foto)}}" alt="">
+            @else
+            <img class="rounded-circle shadow" width="60px" height="60px" src="./assets/images/iconuser.jpeg" alt="">
+            @endif
+          </td>
           <td>{{$x->name}}</td>
           <td>{{$x->email}}</td>
           <td>{{$x->phone}}</td>
@@ -69,6 +83,10 @@
               </form>
               @endif
           </td>
+          {{-- <td>{{$x->role}}</td>
+          @if(Auth::user()->role=='admin')
+          <td>
+          </td> --}}
         </tr>
         @endforeach
       </tbody>

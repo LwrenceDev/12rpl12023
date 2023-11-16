@@ -11,9 +11,16 @@ class InboxController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data =Inbox::all();
+        if($request->cari)
+       {
+            $cari=$request->cari;
+            $data=Inbox::where('no_agenda','like',"%".$cari."%")->paginate(3);
+        }else{
+            $data =Inbox::orderBy('no_agenda')->paginate(3);
+        }
+        $data->appends($request->all());
         return view('inbox.index', compact('data'));
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\SendsController;
 use App\Http\Controllers\DispositionsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::resource('/inbox', InboxController::class)->middleware('auth');
 Route::resource('/send', SendsController::class)->middleware('auth');
 Route::resource('/disposition', DispositionsController::class)->middleware('auth');
 Route::resource('/user', UserController::class)->middleware('auth');
+Route::resource('/profile', ProfileController::class)->middleware('auth');
 Route::resource('/complaint', ComplaintsController::class)->middleware('auth');
 Route::resource('/response', ResponseController::class)->middleware('auth');
 
